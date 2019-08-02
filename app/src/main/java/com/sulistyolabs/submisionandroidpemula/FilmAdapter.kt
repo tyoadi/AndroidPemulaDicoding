@@ -26,11 +26,11 @@ class FilmAdapter(private val ctx: Context, private val listItem: List<FilmModel
         fun bindItem(itemFilm: FilmModel, listener: (FilmModel) -> Unit, context: Context) {
             itemView.tv_film_name.text = itemFilm.name
             itemView.tv_film_quotes.text = itemFilm.quote
-            Glide.with(itemView.context)
-                .load(itemFilm.img)
-                .apply(RequestOptions().override(55, 55))
-                .into(itemView.img_film)
+            Glide.with(context).load(itemFilm.img).apply(RequestOptions().override(55, 55)).into(itemView.img_film)
+
+            itemView.setOnClickListener {
+                listener(itemFilm)
+            }
         }
     }
-
 }
